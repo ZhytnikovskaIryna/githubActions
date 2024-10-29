@@ -22,7 +22,7 @@ jobs:
       - name: Create artifact
         uses: actions/upload-artifact@v4
         with:
-          name: uploaded_artifact
+          name: ${{env.ENV_PATH}}
           path: ./${{env.ENV_PATH}}
       
 
