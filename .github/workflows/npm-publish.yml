@@ -1,0 +1,29 @@
+name: Run js Hello World
+
+on: push
+
+jobs:
+  run-script:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: node Hello.js
+
+  create-artifact:
+    needs: run-script
+    runs-on: windows-latest
+    steps:
+      # Step 1 Checks-out your repository
+      - name: Checkout
+        uses: actions/checkout@v4
+      # Step 2 create artifact
+      - name: Create artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: arifacts
+          path: .
+
