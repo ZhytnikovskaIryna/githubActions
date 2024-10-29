@@ -10,10 +10,10 @@ Tasks implemented in the current repo
      - action/upload-artifact
        
 2. Develop workflow with 2 jobs
-  Job1:
+   - Job1:
      - checkout repo
      - runs node Hello.js
-  Job2:
+   - Job2:
       -depends on job 1
       -checkout repo
       -download artifacts
