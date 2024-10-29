@@ -1,34 +1,28 @@
-name: Artifacts
+name: Workflow which downloads Readme file
 
 env:
-  ENVIRONMENT_VARIABLE1: 'Test env var'
   ENV_PATH: 'README.md'
 on: push
 jobs:
-  # This workflow contains a single job called "build"
+  # job name
   upload-artifact:
     # The type of runner that the job will run on
     runs-on: windows-latest
 
-    # Steps represent a sequence of tasks that will be executed as part of the job
     steps:
-      # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
+      # Step 1 Checks-out your repository
       - name: Checkout
         uses: actions/checkout@v4
 
-      # access env vars from shell
+      # Spep2 - access env vars from shell
       - name: Run a one-line script
-        run: echo $Env:ENVIRONMENT_VARIABLE1
+        run: echo $Env:ENV_PATH
 
-      # access env vars from workflow
-      - name: Run a one-line script
-        run: echo ${{env.ENVIRONMENT_VARIABLE1}}
-
-      # create artifact
+      # Step - 3 create artifact
       - name: Create artifact
         uses: actions/upload-artifact@v4
         with:
-          name: artifact
+          name: uploaded_artifact
           path: ./${{env.ENV_PATH}}
       
 
