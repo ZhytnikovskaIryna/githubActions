@@ -26,7 +26,7 @@ jobs:
 
       # create artifact
       - name: Create artifact
-        uses: actions/upload-artifact@v1.0.0
+        uses: actions/upload-artifact@v4
         with:
           name: artifact
           path: ./${{env.ENV_PATH}}
